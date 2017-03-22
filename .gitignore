@@ -1,0 +1,8 @@
+/target
+/model/
+.classpath
+/.project
+/.settings/
+/sonar-project.properties
+/target/
+/bin/
