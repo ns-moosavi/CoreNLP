@@ -1,4 +1,4 @@
-package edu.stanford.nlp.coref.neural;
+package edu.stanford.nlp.coref.misc;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,6 +25,7 @@ import edu.stanford.nlp.coref.data.Document;
 import edu.stanford.nlp.coref.data.DocumentMaker;
 import edu.stanford.nlp.coref.data.Mention;
 import edu.stanford.nlp.coref.data.Document.DocType;
+import edu.stanford.nlp.coref.neural.CategoricalFeatureExtractor;
 import edu.stanford.nlp.io.IOUtils;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;
