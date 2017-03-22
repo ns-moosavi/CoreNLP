@@ -49,7 +49,7 @@ public class WikiCorefNeuralCorefDataExporter {
 	private final DocumentMaker docMaker;
 	StanfordCoreNLP pipeline;
 	private final boolean useExtendedPairwiseFeatures = false;
-	private final boolean useExtendedPairwiseAttributes = true;
+	private final boolean useExtendedPairwiseAttributes = false;
 
 
 
@@ -306,10 +306,11 @@ public class WikiCorefNeuralCorefDataExporter {
 		props.setProperty("coref.algorithm", "neural");
 		Dictionaries dictionaries = new Dictionaries(props);
 
-		String dataPath = outputPath + "/data_raw_extended/";
-		String goldPath = outputPath + "/gold_extended/";
+		String dataPath = outputPath + "/data_raw/";
+		String goldPath = outputPath + "/gold/";
 		IOUtils.ensureDir(new File(outputPath));
 		IOUtils.ensureDir(new File(dataPath));
+		IOUtils.ensureDir(new File(goldPath));
 		WikiCorefNeuralCorefDataExporter dataExporter = new WikiCorefNeuralCorefDataExporter(props, dictionaries,
 				dataPath+"wikicoref", goldPath+"wikicoref");
 		System.out.println(Arrays.toString(dataExporter.extractor.counts));
@@ -317,6 +318,7 @@ public class WikiCorefNeuralCorefDataExporter {
 		File[] listOfFiles = docFolder.listFiles();
 		Arrays.sort(listOfFiles);
 		for (int i = 0; i < listOfFiles.length; i++) {
+			System.out.println(i);
 			dataExporter.process(i, "/data/nlp/moosavne/corpora/WikiCoref/Annotation/"+listOfFiles[i].getName().replaceAll("\\s", "_")+"/"+listOfFiles[i].getName()+".txt");
 		}
 
